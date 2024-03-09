@@ -1,0 +1,10 @@
+[workspace]
+members = [ "blogspot","macros", "markdown", "template"]
+resolver = "2"
+
+[workspace.dependencies]
+serde = {version= "1" , features=["derive"]}
+tokio = { version = "1.33.0", features = ["full"] }
+log = "0.4.20"
+simple_logger = "4.2.0"
+thiserror = "1"

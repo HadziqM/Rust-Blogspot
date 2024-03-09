@@ -1,0 +1,11 @@
+[package]
+name = "template"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+log.workspace = true
+macros = { version = "0.1.0", path = "../macros" }
+serde.workspace = true
+tera = "1.19.1"
+tokio.workspace = true

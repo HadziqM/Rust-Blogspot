@@ -1,0 +1,12 @@
+[package]
+name = "markdown"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gray_matter = "0.2.6"
+indexmap = { version = "2.2.5", features = ["serde"] }
+pulldown-cmark = "0.10.0"
+serde.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
