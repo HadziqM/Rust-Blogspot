@@ -1,0 +1,56 @@
+[english.intro]
+greet = "Hello, I'm Hadziq."
+description = "I'm just a regular person who has a passion for tech. I've created this site to showcase my projects and skills. I'll also be sharing my knowledge in the blog from time to time. Anyways, I greatly appreciate you for visiting this site."
+about = [
+  { name = "Full Stack", description = "Full Stack Application development requires understanding of frontend, backend, as well as web security, micro-transactions, and many other aspects. While I am self-taught in all of these areas, I can guarantee results." },
+  { name = "Electrical Engineer", description = "Building my own awesome super robot has always been my dream. I have a Bachelor's degree in Electrical Engineering, and I have a deep understanding from transistor architecture to complex circuits, from minimal systems to multifunctional robots. However, I am not a professional in this field." }
+]
+
+[indonesia.intro]
+greet = "Halo, saya Hadziq."
+description = "Hanya manusia biasa dengan passion di dunia teknologi. Saya mencoba memamerkan kemampuan saya dengan membuat situs ini dan menampilkan proyek-proyek saya. Saya juga akan berbagi pengetahuan di blog kadang-kadang. Bagaimanapun juga, saya sangat menghargai kunjungan Anda ke situs ini."
+about = [
+  {name="Full Stack", description = "Pengembangan Aplikasi Full Stack membutuhkan pemahaman tentang frontend, backend, serta keamanan web, transaksi mikro, dan banyak aspek lainnya. Meskipun saya belajar sendiri di semua bidang ini, saya bisa menjamin hasilnya."},
+  {name="Electrical Engineer", description = "Membangun robot super keren sendiri selalu menjadi impian saya. Dari pemahaman tentang arsitektur transistor hingga sirkuit kompleks, dari sistem minimal hingga robot multifungsi, saya mengejar gelar sarjana di bidang ini, meskipun saya bukan seorang profesional."},
+]
+
+
+[english.portfolio]
+occupation = "Electrical & Software Engineer"
+address = "East Java, ID"
+skills = [
+  { name = "3D Design", prof = 40 },
+  { name = "Web Development", prof = 90 },
+  { name = "Databases", prof = 80 },
+  { name = "Systems Programming", prof = 70 },
+  { name = "Microcontrollers", prof = 90 },
+  { name = "Electrical Maintenance", prof = 70 }
+]
+experiences = [
+  { name = "PT Polowijo Gosari as Programmer" , date = "Aug 2022 – March 2023" , description = "My main job was to support other divisions by developing Windows applications and servers to streamline computing. I also revamped and developed software purchased by the company, improving it to meet company needs." },
+  { name = "Fastprint as Web Developer" , date = "May 2023 – Dec 2023" , description = "Responsible for website maintenance using PHP CI3, MySQL, Bootstrap, and jQuery. Integrated with the Odoo platform for sales and content creation. Also collaborated with a team to develop new servers using Python Django." },
+  { name = "PT Metro Jatim Raya as Electrical Maintenance" , date = "Dec 2023 – Present" , description = "Supervised machinery during working hours to ensure proper functioning. Troubleshot and repaired machinery when issues arose. Conducted periodic maintenance and potential system hacks or modifications to improve operational efficiency." }
+]
+educations = [
+  { name = "UNDERGRADUATE ELECTRICAL ENGINEERING - ITS" , date = "2017 - 2022" , description = "Earned a Bachelor's Degree in Electrical Engineering from one of Indonesia's leading universities, with a final GPA of 3.57. Achieved second place in the national paper competition at Telkom University in 2021 and third place at Polman Babel University in 2018." }
+]
+
+[indonesia.portfolio]
+occupation = "Electrical & Software Engineer"
+address = "East Java, ID"
+skills = [
+  { name = "3D Design", prof = 40 },
+  { name = "Web Development", prof = 90 },
+  { name = "Databases", prof = 80 },
+  { name = "Systems Programming", prof = 70 },
+  { name = "Microcontrollers", prof = 90 },
+  { name = "Electrical Maintenance", prof = 70 }
+]
+experiences = [
+  { name = "PT Polowijo Gosari as Programmer" , date = "Aug 2022 – Maret 2023" , description = "Pekerjaan utama saya adalah mendukung divisi lain dengan membuat aplikasi Windows dan server untuk memudahkan komputasi. Saya juga memperbarui dan mengembangkan perangkat lunak yang dibeli perusahaan dengan cara meniru dan meningkatkannya sesuai kebutuhan perusahaan." },
+  { name = "Fastprint as Web Developer" , date = "Mei 2023 – Des 2023" , description = "Pemeliharaan situs web menggunakan PHP CI3, MySQL, Bootstrap, dan jQuery. Integrasi dengan platform Odoo untuk penjualan dan penciptaan konten. Juga mengembangkan server baru dengan tim menggunakan Python Django." },
+  { name = "PT Metro Jatim Raya as Electrical Maintenance" , date = "Des 2023 – Sekarang" , description = "Mengawasi mesin selama jam kerja untuk memastikan fungsi yang tepat. Ketika ada masalah, kami mendiagnosis masalah kemudian memperbaikinya, merawat mesin dan alat secara berkala, dan kemungkinan meretas atau memodifikasi sistem yang ada untuk mendapatkan kondisi kerja yang lebih baik." }
+]
+educations = [
+  { name = "S1 Teknik Elektro - ITS" , date = "2017 - 2022" , description = "Gelar Sarjana Teknik Elektro dari salah satu universitas terkemuka di Indonesia, dengan nilai GPA akhir 3.57. Meraih peringkat kedua dalam kompetisi kertas nasional di Universitas Telkom pada tahun 2021 dan peringkat ketiga di Universitas Polman Babel pada tahun 2018." }
+]

@@ -1,0 +1,28 @@
+# [env]
+# CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
+
+[tasks.format]
+command = "cargo"
+args = ["fmt"]
+
+[tasks.run-blogspot]
+command = "cargo"
+args = ["run", "--package", "blogspot"]
+
+[tasks.tailwind]
+workspace = false
+command = "npx"
+args = ["tailwindcss", "-i", "./tailwind.css", "-o", "./public/style.css", "--watch"]
+
+[tasks.watch]
+workspace = false
+command = "cargo-watch"
+args = ["-x","fmt","-x","run", "--package", "blogspot"]
+
+[tasks.my-flow]
+workspace = false
+dependencies = [
+  "format",
+  "tailwind",
+  "run-blogspot",
+]
