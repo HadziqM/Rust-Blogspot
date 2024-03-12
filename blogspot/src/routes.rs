@@ -1,9 +1,10 @@
 use crate::{
     model::{Content, Intro, Portfolio},
+    oauth::{self, Oauth},
     setup::{AppState, HtmlOut},
 };
 use axum::{
-    extract::{Path, State},
+    extract::{Path, Query, State},
     response::Redirect,
     routing::get,
     Router,
@@ -19,7 +20,11 @@ pub enum MyPage {
     E404,
     // post page
     #[location = "pages/blog.html"]
-    Post { post: PostData, language: Language },
+    Post {
+        post: PostData,
+        language: Language,
+        name: PostType,
+    },
 
     #[location = "pages/intro.html"]
     Intro { data: Intro, language: Language },
@@ -34,6 +39,8 @@ pub enum MyPage {
         tag: Option<String>,
         language: Language,
     },
+    #[location = "pages/oauth.html"]
+    Oauth { data: Oauth }
 }
 
 async fn index(app: AppState, language: Language) -> HtmlOut {
@@ -57,6 +64,7 @@ async fn render_post(app: AppState, slug: String, post: PostType, language: Lang
     app.render(MyPage::Post {
         post: app.markdown.get_post(language, post, slug).await?,
         language,
+        name: post,
     })
     .await
 }
@@ -85,18 +93,10 @@ async fn list_tag(
     app.render(MyPage::List {
         list: app.markdown.list_from_tag(language, post, &tag, page).await,
         post,
-        tag: None,
+        tag: Some(tag),
         language,
     })
     .await
-}
-async fn reload(State(app): State<AppState>) -> String {
-    if app.template.reload().await.is_ok() {
-        if app.markdown.reload().await.is_ok() {
-            return "success".into();
-        }
-    }
-    "failed".into()
 }
 
 async fn page_or_list(app: AppState, slug: String, post: PostType, language: Language) -> HtmlOut {
@@ -105,6 +105,18 @@ async fn page_or_list(app: AppState, slug: String, post: PostType, language: Lan
     } else {
         render_post(app, slug, post, language).await
     }
+}
+#[derive(serde::Deserialize)]
+struct QueryCode {
+    code: String,
+}
+async fn callback(State(app): State<AppState> , Query(params): Query<QueryCode>) -> HtmlOut {
+    let data =  oauth::redirect(params.code.to_owned(), &app).await?;
+    app.render(MyPage::Oauth { data }).await
+}
+
+async fn oauth2(State(app): State<AppState>) -> Redirect {
+    Redirect::temporary(&app.setting.read().await.oauth_url)
 }
 
 fn post_route(language: Language, post: PostType) -> Router<AppState> {
@@ -137,7 +149,6 @@ fn lang_route(language: Language) -> Router<AppState> {
             "/",
             get(move |State(app): State<AppState>| index(app, language)),
         )
-        .route("/reload", get(reload))
         .route(
             "/portfolio",
             get(move |State(app): State<AppState>| portofolio(app, language)),
@@ -151,4 +162,6 @@ pub fn reg() -> Router<AppState> {
         .route("/", get(|| async { Redirect::permanent("/en") }))
         .nest("/en", lang_route(Language::Eng))
         .nest("/id", lang_route(Language::Idn))
+        .route("/oauth", get(oauth2))
+        .route("/callback", get(callback))
 }

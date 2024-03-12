@@ -1,7 +1,5 @@
-
-
-
 listen_addr =  "127.0.0.1:8000"
-github_pull = ""
-oauth_url =  ""
-user_id = ""
+oauth_url =  "https://github.com/login/oauth/authorize?client_id=bc2bd2ad562c74818ea5&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Fcallback"
+callback_url = "http://127.0.0.1:8000/callback"
+user_id = 50319538
+client_id = "bc2bd2ad562c74818ea5"

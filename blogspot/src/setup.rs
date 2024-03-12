@@ -15,10 +15,10 @@ use crate::routes::error;
 #[derive(serde::Deserialize, Clone)]
 pub struct Setting {
     pub listen_addr: String,
-    // pub tag_list: Vec<String>,
-    pub github_pull: String,
+    pub callback_url: String,
     pub oauth_url: String,
-    pub user_id: String,
+    pub user_id: usize,
+    pub client_id: String
 }
 
 #[derive(Clone)]
@@ -38,6 +38,8 @@ pub enum Myerror {
     Toml(#[from] toml::de::Error),
     #[error("tokio I/O error")]
     Tokio(#[from] tokio::io::Error),
+    #[error("reqwest channel error")]
+    Reqwest(#[from] reqwest::Error)
 }
 
 impl IntoResponse for Myerror {

@@ -7,6 +7,7 @@ edition = "2021"
 axum = "0.7.4"
 log.workspace = true
 markdown = { version = "0.1.0", path = "../markdown" }
+reqwest = { version = "0.11.25", features = ["json"] }
 serde.workspace = true
 simple_logger = "4.3.3"
 template = { version = "0.1.0", path = "../template" }

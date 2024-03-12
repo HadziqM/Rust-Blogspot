@@ -4,14 +4,15 @@
 {{ super() }}
 {% endblock header %}
 {% block title %}
-{{ super() }}
+  404 | Hadziq
 {% endblock title %}
 {% block body %}
-<div class="hero h-4/5 w-full bg-base-200">
-    <div class="hero-content text-accent text-center">
-        <div class="max-w-md">
-        <h1 class="text-5xl  font-bold">404 - Not Found</h1>
+<section class="mx-auto">
+    <div class="w-screen px-4 py-8">
+        <div class="flex items-center justify-center flex-col">
+            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"> 404-Notfound</h1>
+            <p class="max-w-2xl mb-6 font-light text-center text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">the url you entered isnt available</p>
         </div>
     </div>
-</div>
+</section>
 {% endblock body %}

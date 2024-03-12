@@ -37,7 +37,7 @@ educations = [
 
 [indonesia.portfolio]
 occupation = "Electrical & Software Engineer"
-address = "East Java, ID"
+address = "Lamongan,JawaTimur"
 skills = [
   { name = "3D Design", prof = 40 },
   { name = "Web Development", prof = 90 },
