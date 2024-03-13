@@ -121,24 +121,26 @@ async fn parse_from_path(dir: PathBuf) -> MyResult<IndexMap<String, PostData>> {
 impl Markdown {
     async fn init() -> MyResult<MarkdownData> {
         let path = Path::new(".").join("pages").join("markdown");
+        let en = path.join("en");
+        let id = path.join("id");
         Ok(HashMap::from_iter([
             (
                 Language::Eng,
                 HashMap::from_iter([
-                    (PostType::Blog, parse_from_path(path.join("blog")).await?),
+                    (PostType::Blog, parse_from_path(en.join("blog")).await?),
                     (
                         PostType::Project,
-                        parse_from_path(path.join("project")).await?,
+                        parse_from_path(en.join("project")).await?,
                     ),
                 ]),
             ),
             (
                 Language::Idn,
                 HashMap::from_iter([
-                    (PostType::Blog, parse_from_path(path.join("blog")).await?),
+                    (PostType::Blog, parse_from_path(id.join("blog")).await?),
                     (
                         PostType::Project,
-                        parse_from_path(path.join("project")).await?,
+                        parse_from_path(id.join("project")).await?,
                     ),
                 ]),
             ),

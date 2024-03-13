@@ -2,7 +2,7 @@ use std::ops::Deref;
 use std::sync::Arc;
 use tera::{Context, Result, Tera};
 use tokio::sync::RwLock;
-pub use {macros, tera};
+pub use {macros::PageRender, tera};
 
 /// the tera model for SSR rendering, the output are string so warp them on HTML file when serving
 #[derive(Clone)]

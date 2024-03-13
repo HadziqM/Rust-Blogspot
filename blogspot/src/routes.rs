@@ -10,7 +10,7 @@ use axum::{
     Router,
 };
 use markdown::{Language, PostData, PostList, PostType};
-use template::macros::PageRender;
+use template::PageRender;
 
 #[derive(PageRender)]
 pub enum MyPage {
@@ -40,7 +40,7 @@ pub enum MyPage {
         language: Language,
     },
     #[location = "pages/oauth.html"]
-    Oauth { data: Oauth }
+    Oauth { data: Oauth },
 }
 
 async fn index(app: AppState, language: Language) -> HtmlOut {
@@ -110,8 +110,8 @@ async fn page_or_list(app: AppState, slug: String, post: PostType, language: Lan
 struct QueryCode {
     code: String,
 }
-async fn callback(State(app): State<AppState> , Query(params): Query<QueryCode>) -> HtmlOut {
-    let data =  oauth::redirect(params.code.to_owned(), &app).await?;
+async fn callback(State(app): State<AppState>, Query(params): Query<QueryCode>) -> HtmlOut {
+    let data = oauth::redirect(params.code.to_owned(), &app).await?;
     app.render(MyPage::Oauth { data }).await
 }
 

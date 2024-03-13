@@ -7,7 +7,9 @@
     "flowbite": "^2.3.0"
   },
   "scripts": {
+    "init":"touch Secret.toml&&chmod a+rwx server",
     "build": "npx tailwindcss -i ./tailwind.css -o ./public/style.css",
+    "run":"npm run build&&nohup ./server",
     "git": "git pull origin main -f",
     "flow": "npm run build&&npm run git"
   }

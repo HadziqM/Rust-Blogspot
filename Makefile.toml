@@ -1,14 +1,3 @@
-# [env]
-# CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
-
-[tasks.format]
-command = "cargo"
-args = ["fmt"]
-
-[tasks.run-blogspot]
-command = "cargo"
-args = ["run", "--package", "blogspot"]
-
 [tasks.tailwind]
 workspace = false
 command = "npx"
@@ -19,10 +8,19 @@ workspace = false
 command = "cargo-watch"
 args = ["-x","fmt","-x","run", "--package", "blogspot"]
 
-[tasks.my-flow]
+[tasks.build]
+workspace = false
+command = "cargo"
+args = ["build","--release", "--package", "blogspot"]
+
+[tasks.dir]
+command = "mv"
+args = ["./target/release/blogspot","./server"]
+
+
+[tasks.release]
 workspace = false
 dependencies = [
-  "format",
-  "tailwind",
-  "run-blogspot",
+  "build",
+  "dir",
 ]

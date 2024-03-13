@@ -18,7 +18,7 @@ pub struct Setting {
     pub callback_url: String,
     pub oauth_url: String,
     pub user_id: usize,
-    pub client_id: String
+    pub client_id: String,
 }
 
 #[derive(Clone)]
@@ -39,7 +39,7 @@ pub enum Myerror {
     #[error("tokio I/O error")]
     Tokio(#[from] tokio::io::Error),
     #[error("reqwest channel error")]
-    Reqwest(#[from] reqwest::Error)
+    Reqwest(#[from] reqwest::Error),
 }
 
 impl IntoResponse for Myerror {

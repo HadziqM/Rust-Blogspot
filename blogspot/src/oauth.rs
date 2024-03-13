@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use tokio::process::Command;
 
-use crate::setup::{ AppState, Myerror};
+use crate::setup::{AppState, Myerror};
 
 #[derive(Debug, Deserialize)]
 struct Access {
@@ -16,13 +16,13 @@ struct Secret {
 pub struct User {
     pub login: String,
     pub id: usize,
-    pub avatar_url : String
+    pub avatar_url: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Oauth {
     pub user: User,
-    pub allowed: bool
+    pub allowed: bool,
 }
 
 pub async fn redirect(code: String, app: &AppState) -> Result<Oauth, Myerror> {
@@ -56,11 +56,15 @@ pub async fn redirect(code: String, app: &AppState) -> Result<Oauth, Myerror> {
     let allowed = &res2.id == &setting.user_id;
     if allowed {
         Command::new("sh")
-            .args(&["-c","npm run flow"])
+            .args(&["-c", "npm run flow"])
             .spawn()?
-            .wait().await?;
+            .wait()
+            .await?;
         app.template.reload().await?;
         app.markdown.reload().await?;
     }
-    Ok(Oauth {allowed,user:res2})
+    Ok(Oauth {
+        allowed,
+        user: res2,
+    })
 }
